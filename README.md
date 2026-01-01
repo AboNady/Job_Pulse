@@ -240,7 +240,7 @@ Cache::forget("employer_{$employerId}_jobs");
 
 ## ⚡ Performance Engineering
 
-### Aggressive Caching Strategy
+### Caching Strategy
 
 Job Pulse implements **multi-tiered caching** for production-grade performance:
 
