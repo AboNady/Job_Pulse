@@ -509,7 +509,6 @@ You are free to use, modify, and distribute this software for personal purposes.
   <img src="https://img.shields.io/github/stars/AboNady/Job_Pulse?style=for-the-badge&logo=github&color=yellow" alt="Stars">
   <img src="https://img.shields.io/github/forks/AboNady/Job_Pulse?style=for-the-badge&logo=github&color=orange" alt="Forks">
   <img src="https://img.shields.io/github/issues/AboNady/Job_Pulse?style=for-the-badge&logo=github&color=red" alt="Issues">
-  <img src="https://img.shields.io/github/license/AboNady/Job_Pulse?style=for-the-badge&logo=github&color=blue" alt="License">
 </p>
 
 ---
