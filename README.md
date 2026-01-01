@@ -75,8 +75,6 @@ Job Pulse combines modern Laravel development with cutting-edge AI features to s
 
 ### 📊 Analytics & Insights
 - **Salary histogram engine** with Chart.js
-- **Tag usage statistics** dashboard
-- **Market visualization** (salary distribution)
 - **Dynamic data bucketing** (10k ranges)
 - **Real-time metrics** tracking
 
