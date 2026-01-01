@@ -1,0 +1,67 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-black: #060606;
+    --font-hanken-grotesk: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ------------------------------------------------ */
+/* CUSTOM CHAT WIDGET STYLES           */
+/* ------------------------------------------------ */
+
+/* 1. Custom Scrollbar (Thin & Glassy) */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+}
+
+/* 2. Markdown Formatting (Fixes missing dots/bold) */
+/* We use @apply to borrow Tailwind styles */
+
+.markdown-body p {
+    @apply mb-3 last:mb-0;
+}
+
+.markdown-body strong {
+    @apply font-bold text-indigo-300;
+}
+
+.markdown-body ul {
+    @apply list-disc pl-5 my-2 space-y-1 text-slate-300;
+}
+
+.markdown-body ol {
+    @apply list-decimal pl-5 my-2 space-y-1 text-slate-300;
+}
+
+.markdown-body li {
+    @apply pl-1;
+}
+
+.markdown-body code {
+    @apply bg-black/30 px-1.5 py-0.5 rounded text-indigo-200 font-mono text-xs border border-white/10;
+}
+
+.markdown-body pre {
+    @apply bg-black/30 p-3 rounded-lg border border-white/10 overflow-x-auto my-3;
+}
+
+.markdown-body pre code {
+    @apply bg-transparent p-0 border-0 text-slate-300;
+}
+
+.markdown-body a {
+    @apply text-blue-400 underline hover:text-blue-300;
+}

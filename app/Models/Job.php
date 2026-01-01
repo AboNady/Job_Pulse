@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Job extends Model
+{
+    /** @use HasFactory<\Database\Factories\JobFactory> */
+    use HasFactory;
+    protected $casts = [
+        'posted_date' => 'date',
+        'closing_date' => 'date',
+        'is_featured' => 'boolean',
+    ];
+    public function employer()
+    {
+        return $this->belongsTo(Employer::class);
+    }
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+}
