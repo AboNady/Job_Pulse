@@ -432,49 +432,6 @@ Visit `http://localhost:8000` 🎉
 
 ---
 
-## 💡 Usage Guide
-
-### For Job Seekers
-
-#### Traditional Search:
-- Filter by location, salary range, or skill tags
-- Browse featured listings on homepage
-- View detailed job descriptions with company info
-
-#### AI-Powered Search with Pixel AI:
-Open the chat interface and ask natural questions:
-
-- *"Find entry-level positions for PHP beginners"*
-- *"What jobs would suit someone who loves building APIs?"*
-- *"Highest paying software jobs"*
-- *"Most recent postings in Cairo"*
-
-### For Employers
-
-#### Getting Started:
-1. **Register Account** at `/register`
-2. **Verify Email** via sent link
-3. **Access Dashboard** at `/dashboard`
-
-#### Creating a Job Posting:
-1. Click "Create New Job"
-2. Fill required fields:
-   - Job title and description
-   - Salary range (e.g., "50,000 - 70,000 EGP")
-   - Location (city or "Remote")
-   - Closing date (must be future date)
-3. Upload company logo (optional, max 2MB)
-4. Select relevant skill tags (Laravel, React, etc.)
-5. Publish instantly
-
-#### Managing Listings:
-- **Edit:** Click pencil icon (only your jobs)
-- **Delete:** Click trash icon with confirmation
-- **View Stats:** See application counts and views
-- **Feature Job:** Highlight on homepage (if enabled)
-
-```
-
 ### Vector Search Tuning
 
 Adjust similarity threshold in `app/Services/VectorService.php`:
