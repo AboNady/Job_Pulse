@@ -5,16 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Employer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\Rule; // Cleaner validation
+use Illuminate\Support\Facades\Cache; 
+use Illuminate\Validation\Rule;
 
 class EmployerController extends Controller
 {
     public function index(Request $request)
     {
         // PERFORMANCE FIX 1: Select only what you see on the card.
-        // This saves memory by not loading huge bio/description text for 12 companies.
         $query = Employer::select(['id', 'user_id', 'name', 'address', 'logo', 'created_at','phone'])
-            ->withCount('jobs'); // PERFORMANCE FIX 2: Get job count in 1 query, not 12.
+            ->withCount('jobs'); // PERFORMANCE FIX 2: Get job count in 1 query.
 
         // Live search
         if ($request->filled('q')) {
@@ -31,12 +31,11 @@ class EmployerController extends Controller
 
     public function update(Request $request)
     {
-        // Optimization: Use $request->user() instead of Auth facade (slightly faster/cleaner)
+        // Optimization: Use $request->user() instead of Auth facade
         $employer = $request->user()->employer;
 
         $validated = $request->validate([
             'employer_name'    => 'required|string|max:255',
-            // Optimization: Ignore current ID in unique check properly
             'employer_email'   => ['required', 'email', Rule::unique('employers', 'email')->ignore($employer->id)],
             'employer_phone'   => 'required|string|max:20',
             'employer_address' => 'required|string|max:255',
@@ -64,8 +63,17 @@ class EmployerController extends Controller
         }
 
         // PERFORMANCE FIX 3: Single DB Update Query
-        // Instead of setting property -> save -> property -> save, do it once.
         $employer->update($data);
+
+        // 1. Clear Global Lists (Homepage featured jobs show company logos!)
+        Cache::forget('featured_jobs');
+        Cache::forget('companies_list'); // If you cache the company index later
+
+        // 2. Clear SPECIFIC Job Pages
+
+        foreach ($employer->jobs as $job) {
+            Cache::forget('job_' . $job->id);
+        }
 
         return redirect()->route('companies.index')
             ->with('success', 'Company profile updated.');
